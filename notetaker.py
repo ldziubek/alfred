@@ -1,6 +1,7 @@
 import speech_recognition as sr
 import os
 import datetime
+import functions
 
 
 def note_recorder():
@@ -13,74 +14,74 @@ def note_recorder():
 
 
 def note_add():
-    speak("Słucham!")
+    functions.speak("Słucham!")
     note_recorder()
-    speak("Czy zapisać?")
-    command = record_audio()
+    functions.speak("Czy zapisać?")
+    command = functions.record_audio()
     if "tak" in command:
-        speak("Podaj nazwę")
-        name = record_audio()
+        functions.speak("Podaj nazwę")
+        name = functions.record_audio()
         listfile = "notelist.txt"
         with open(listfile, 'a') as f:
             f.write(name + "\n")
         os.rename("note.wav", "{}-{}.wav".format(datetime.date.today(), name))
-        speak("Zapisano notatkę: {}".format(name))
+        functions.speak("Zapisano notatkę: {}".format(name))
     elif "odtwórz" in command:
         os.system("aplay note.wav")
-        speak("Czy zapisać?")
-        command = record_audio()
+        functions.speak("Czy zapisać?")
+        command = functions.record_audio()
         if "tak" in command:
-            speak("Podaj nazwę")
-            name = record_audio()
+            functions.speak("Podaj nazwę")
+            name = functions.record_audio()
             listfile = "notelist.txt"
             with open(listfile, 'a') as f:
                 f.write(name + "\n")
             os.rename("note.wav", "{}-{}.wav".format(datetime.date.today(), name))
-            speak("Zapisano notatkę: {}".format(name))
+            functions.speak("Zapisano notatkę: {}".format(name))
         elif "nie" in command:
             os.remove("note.wav")
-            speak("Notatka nie została zapisana")
+            functions.speak("Notatka nie została zapisana")
     elif "nie" in command:
         os.remove("note.wav")
-        speak("Notatka nie została zapisana")
+        functions.speak("Notatka nie została zapisana")
     else:
         return
 
 
 def note_list():
-    speak("Lista notatek:")
+    functions.speak("Lista notatek:")
     with open("notelist.txt") as file:
         lines = [line.strip() for line in file]
     for i in lines:
-        speak(i)
-    speak("Czy chcesz otworzyć którąś notatkę?")
-    command = record_audio()
+        functions.speak(i)
+    functions.speak("Czy chcesz otworzyć którąś notatkę?")
+    command = functions.record_audio()
     if "tak" in command:
         note_playback()
     elif command in lines:
         os.system("aplay {}-{}.wav".format(datetime.date.today(), command))
     elif "nie" in command:
-        speak("Rozumiem")
+        functions.speak("Rozumiem")
     else:
         return
 
 
 def note_playback():
-    speak("Którą notatkę mam odtworzyć?")
+    functions.speak("Którą notatkę mam odtworzyć?")
     with open("notelist.txt") as file:
         lines = [line.strip() for line in file]
-    command = record_audio()
+    command = functions.record_audio()
     if command in lines:
         os.system("aplay {}-{}.wav".format(datetime.date.today(), command))
     else:
-        speak("Nie znaleziono notatki.")
+        functions.speak("Nie znaleziono notatki.")
 
 
 def note_remove():
     with open("notelist.txt") as file:
         lines = [line.strip() for line in file]
-    speak("Którą notatkę mam usunąć?")
-    command = record_audio()
+    functions.speak("Którą notatkę mam usunąć?")
+    command = functions.record_audio()
     if command in lines:
         f = open("notelist.txt", "r")
         filecontent = f.read()
@@ -91,8 +92,4 @@ def note_remove():
         f.close()
         os.remove("{}-{}.wav".format(datetime.date.today(), command))
     else:
-        speak("Nie znaleziono notatki.")
-
-
-from functions import speak
-from functions import record_audio
+        functions.speak("Nie znaleziono notatki.")
