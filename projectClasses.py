@@ -3,6 +3,8 @@ import os
 import pyautogui
 import notetaker
 import functions
+import subprocess
+import shlex
 
 
 class Program:
@@ -143,7 +145,7 @@ class Spotify:
 
     def launch():
         functions.speak("Włączam spotifaj")
-        os.system("flatpak run com.spotify.Client")
+        subprocess.Popen(shlex.split("flatpak run com.spotify.Client"))
 
 
 class IDE:
@@ -152,7 +154,7 @@ class IDE:
 
     def launch():
         functions.speak("Włączam środowisko programistyczne")
-        os.system("flatpak run io.atom.Atom")
+        subprocess.Popen(shlex.split("flatpak run io.atom.Atom"))
 
 
 class Memsource:
@@ -329,7 +331,7 @@ class Franz:
 
     def launch():
         functions.speak("Włączam komunikator")
-        os.system("flatpak run com.meetfranz.Franz")
+        subprocess.Popen(shlex.split("flatpak run com.meetfranz.Franz"))
 
 
 class Webcomics:
@@ -354,6 +356,25 @@ class WeatherForecast:
         functions.speak("Otwieram prognozę pogody.")
         webbrowser.open_new_tab("https://duckduckgo.com/?q=weather+krak%C3%B3w&t=ffab&ia=weather")
 
+    def launchCity(arg):
+        functions.speak("Otwieram prognozę pogody.")
+        if arg == "krakowie":
+            webbrowser.open_new_tab("https://duckduckgo.com/?q=weather+krak%C3%B3w&t=ffab&ia=weather")
+        elif arg == "kraków":
+            webbrowser.open_new_tab("https://duckduckgo.com/?q=weather+krak%C3%B3w&t=ffab&ia=weather")
+        elif arg == "warszawie":
+            webbrowser.open_new_tab("https://duckduckgo.com/?q=weather+warszawa&t=ffab&ia=weather")
+        elif arg == "warszawa":
+            webbrowser.open_new_tab("https://duckduckgo.com/?q=weather+warszawa&t=ffab&ia=weather")
+        elif arg == "oświęcimiu":
+            webbrowser.open_new_tab("https://www.weatheronline.pl/Malopolskie/Oswiecim.htm")
+        elif arg == "oświęcim":
+            webbrowser.open_new_tab("https://www.weatheronline.pl/Malopolskie/Oswiecim.htm")
+        elif arg == "jasień":
+            webbrowser.open_new_tab("https://www.weatheronline.pl/Pomorskie/Bytow.htm")
+        elif arg == "jasieniu":
+            webbrowser.open_new_tab("https://www.weatheronline.pl/Pomorskie/Bytow.htm")
+
 
 class Lbry:
     def __init__(self, name):
@@ -361,7 +382,7 @@ class Lbry:
 
     def launch():
         functions.speak("Włączam lajbry")
-        os.system("flatpak run io.lbry.lbry-app")
+        subprocess.Popen(shlex.split("flatpak run io.lbry.lbry-app"))
 
 
 class WhatsTheTime:
@@ -401,7 +422,7 @@ class CodingSetup:
         functions.run_program("gnome-terminal")
         functions.run_program("synology-note-station")
         functions.run_program("firefox")
-        os.system("flatpak run io.atom.Atom")
+        subprocess.Popen(shlex.split("flatpak run io.atom.Atom"))
 
 
 class TranslationSetup:
@@ -414,4 +435,4 @@ class TranslationSetup:
         functions.run_program("synology-note-station")
         functions.run_program("mailspring")
         functions.run_program("firefox")
-        os.system("flatpak run com.meetfranz.Franz")
+        subprocess.Popen(shlex.split("flatpak run com.meetfranz.Franz"))

@@ -3,6 +3,8 @@ import projectClasses
 
 stops = ["quit", "close", "exit", "stop", "zamknij"]
 search = ["search", "find", "wyszukaj", "znajdź"]
+cities = ["kraków", "krakowie", "oświęcim", "oświęcimiu", "warszawa", "warszawie", "jasień", "jasieniu"]
+weather = ["pogoda", "pogody", "pogodę", "prognoza", "prognozę"]
 
 lexicon = {
     'terminal':projectClasses.TerminalConsole,
@@ -129,11 +131,6 @@ lexicon = {
     'cartoons':projectClasses.Webcomics,
     'komiks':projectClasses.Webcomics,
     'komiksy':projectClasses.Webcomics,
-    'weather':projectClasses.WeatherForecast,
-    'pogoda':projectClasses.WeatherForecast,
-    'prognoza':projectClasses.WeatherForecast,
-    'prognozę':projectClasses.WeatherForecast,
-    'pogodę':projectClasses.WeatherForecast,
     'library':projectClasses.Lbry,
     'lajbry':projectClasses.Lbry,
     'wideoteka':projectClasses.Lbry,

@@ -46,19 +46,17 @@ def sound(sound):
 
 def record_audio():
     for i in range(0, 3):
-        print("Listening...")
+        print("Nasłuchiwanie...")
         r = sr.Recognizer()
         with sr.Microphone() as source:
             r.adjust_for_ambient_noise(source, duration=1)
             audio = r.listen(source)
         try:
-            # Uses the default API key
-            # To use another API key: `r.recognize_google(audio, key="GOOGLE_SPEECH_RECOGNITION_API_KEY")`
             phrase = r.recognize_google(audio, language="pl-PL")
-            print("You said: " + phrase.lower())
+            print("Wypowiedź: " + phrase.lower())
             return phrase.lower()
         except sr.UnknownValueError:
-            print("Google Speech Recognition could not understand audio")
+            print("Nie udało się rozpoznać wypowiedzi")
             if i < 1:
                 print(i)
                 i += 1
@@ -66,7 +64,7 @@ def record_audio():
             else:
                 return "błąd rozpoznawania"
         except sr.RequestError as e:
-            print("Could not request results from Google Speech Recognition service; {0}".format(e))
+            print("Nieudane żądanie do rozpoznawania mowy Google; {0}".format(e))
             return "błąd rozpoznawania"
         except:
             return "błąd rozpoznawania"
@@ -131,17 +129,31 @@ def kill_program(progname):
         pass
 
 
-def ProgramOn(utterance):
+def programOn(utterance):
     elements = utterance.split(' ', 1)
     if any(word in dictionary.lexicon for word in elements):
         return True
     return False
 
 
-def ProgramOff(utterance):
+def programOff(utterance):
     elements = utterance.split(' ', 1)
     if any(word in dictionary.stops for word in elements) and any(word in dictionary.lexicon for word in elements):
         return True
+    return False
+
+
+def weatherInCity(utterance):
+    elements = utterance.split(' ')
+    if any(word in dictionary.cities for word in elements) and any(word in dictionary.weather for word in elements):
+        return True
+    return False
+
+def weather(utterance):
+    elements = utterance.split(' ')
+    if any(word in dictionary.weather for word in elements):
+        if not any(word in dictionary.cities for word in elements):
+            return True
     return False
 
 
@@ -154,11 +166,10 @@ def command_prompt(parameter):
         else:
             command = record_audio()
         if all(word not in command for word in dictionary.stops):
-            if ProgramOn(command):
-                elements = command.split(" ", 1)
+            if programOn(command):
+                elements = command.split(" ")
                 for word in elements:
                     if word in dictionary.lexicon:
-                        print (word)
                         word = dictionary.lexicon[word]
                         word.launch()
             elif "gdzie jest" in command:
@@ -171,6 +182,13 @@ def command_prompt(parameter):
                 keyword = command[1]
                 speak("Wyszukuję " + keyword)
                 webbrowser.open_new_tab("https://duckduckgo.com/?q=" + keyword)
+            elif weatherInCity(command):
+                elements = command.split(" ")
+                for word in elements:
+                    if word in dictionary.cities:
+                        projectClasses.WeatherForecast.launchCity(word)
+            elif weather(command):
+                projectClasses.WeatherForecast.launch()
             if "to wszystko" in command:
                 speak("Dziękuję. Bez odbioru.")
                 return
@@ -178,12 +196,10 @@ def command_prompt(parameter):
                 speak("Błąd. Bez odbioru.")
                 return
         else:
-            if ProgramOff(command):
-                #speak("Zamykam przeglądarkę.")
-                elements = command.split(" ", 1)
+            if programOff(command):
+                elements = command.split(" ")
                 for word in elements:
                     if word in dictionary.lexicon:
-                        print (word)
                         word = dictionary.lexicon[word]
                         word.kill()
 
