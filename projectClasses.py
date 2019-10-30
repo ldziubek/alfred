@@ -39,12 +39,12 @@ class TextEditor:
         self.name = name
 
     def launch():
-        texteditor = Program("Edytor tekstu", "gedit")
+        os.system("xdg-mime query default text/plain  > output.txt")
+        file = open("output.txt", "r")
+        programname = ("gtk-launch " + file.read())
+        file.close()
+        texteditor = Program("Edytor tekstu", shlex.split(programname))
         texteditor.run()
-
-    def kill():
-        texteditor = Program("Edytor tekstu", "gedit")
-        texteditor.kill()
 
 
 class LaunchBrowser:
@@ -52,13 +52,12 @@ class LaunchBrowser:
         self.name = name
 
     def launch():
-        functions.speak("Włączam przeglądarkę.")
-        webbrowser.open_new_tab("https://duckduckgo.com/")
-
-    def kill():
-        terminalConsole = Program("Przeglądarkę", "firefox")
-        terminalConsole.kill()
-        os.system('killall chrome')
+        os.system("xdg-settings get default-web-browser > output.txt")
+        file = open("output.txt", "r")
+        programname = ("gtk-launch " + file.read())
+        file.close()
+        browser = Program("przeglądarkę", shlex.split(programname))
+        browser.run()
 
 
 class GoogleChrome:
@@ -92,12 +91,12 @@ class EmailClient:
         self.name = name
 
     def launch():
-        mailspring = Program("Mailspring", "mailspring")
+        os.system("xdg-settings get default-url-scheme-handler mailto > output.txt")
+        file = open("output.txt", "r")
+        programname = ("gtk-launch " + file.read())
+        file.close()
+        mailspring = Program("Mailspring", shlex.split(programname))
         mailspring.run()
-
-    def kill():
-        mailspring = Program("Mailspring", "mailspring")
-        mailspring.kill()
 
 
 class FileManager:
@@ -105,12 +104,8 @@ class FileManager:
         self.name = name
 
     def launch():
-        filemanager = Program("Menedżer plików", "nautilus")
+        filemanager = Program("menedżer plików", shlex.split("xdg-open ."))
         filemanager.run()
-
-    def kill():
-        filemanager = Program("Menedżer plików", "nautilus")
-        filemanager.kill()
 
 
 class GnomeCalculator:
