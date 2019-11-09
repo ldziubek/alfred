@@ -287,7 +287,7 @@ class LockScreen:
         self.name = name
 
     def launch():
-        os.system("dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock")
+        os.system("xdg-screensaver lock")
 
 
 class PlayPause:
@@ -440,3 +440,37 @@ class TranslationSetup:
         functions.run_program("mailspring")
         functions.run_program("firefox")
         subprocess.Popen(shlex.split("flatpak run com.meetfranz.Franz"))
+
+
+class SendEmail:
+    def __init__(self, name):
+        self.name = name
+
+    def launch():
+        functions.speak("Podaj temat.")
+        subject = functions.record_audio()
+        print(subject)
+        functions.speak("Podaj odbiorcę")
+        recipient = functions.record_audio()
+        print(recipient)
+        try:
+            with open("recipients.txt") as f:
+                emailContacts = dict(line.strip().split(":") for line in f)
+        except FileNotFoundError:
+            print("Lista odbiorców niedostępna.")
+            emailContacts = {}
+        if recipient in emailContacts:
+            recipientAddress = emailContacts[recipient]
+            print(recipientAddress)
+            functions.speak("Podaj treść")
+            mailBody = functions.record_audio()
+            print(mailBody)
+            functions.speak("Przygotowano wiadomość do odbiorcy: " + recipient + " o temacie: " + subject + " i treści: " + mailBody + ". Czy otworzyć w programie pocztowym?")
+            decision = functions.record_audio()
+            if decision == "tak":
+                polecenie = "xdg-email --subject \'{!s}\' --body \'{!s}\' \'{!s}\'".format(subject, mailBody, recipientAddress)
+                subprocess.Popen(shlex.split(polecenie))
+            else:
+                functions.speak("Kasuję wiadomość.")
+        else:
+            functions.speak("Nie rozpoznano odbiorcy")

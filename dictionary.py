@@ -145,4 +145,5 @@ lexicon = {
     'będę wystawiać faktury':projectClasses.AccountingSetup,
     'będę programować':projectClasses.CodingSetup,
     'będę tłumaczyć':projectClasses.TranslationSetup,
+    'wiadomość':projectClasses.SendEmail,
     }
