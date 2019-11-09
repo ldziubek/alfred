@@ -305,6 +305,7 @@ class AddNote:
     def launch():
         notetaker.note_add()
 
+
 class RemoveNote:
     def __init__(self, name):
         self.name = name

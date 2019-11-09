@@ -14,7 +14,7 @@ import dictionary
 
 
 def speak(audio_string):
-        speak_on(audio_string)
+    speak_on(audio_string)
 
 
 def speak_off(audio_string):
@@ -120,6 +120,7 @@ def run_program(progname):
         speak("Nie znaleziono programu.")
         pass
 
+
 def kill_program(progname):
     try:
         print(progname)
@@ -148,6 +149,7 @@ def weatherInCity(utterance):
     if any(word in dictionary.cities for word in elements) and any(word in dictionary.weather for word in elements):
         return True
     return False
+
 
 def weather(utterance):
     elements = utterance.split(' ')
@@ -247,5 +249,6 @@ def reformat_time():
     elif "Dec" in new_time:
         new_time = new_time.replace("Dec", "grudzień")
     return new_time
+
 
 import projectClasses
