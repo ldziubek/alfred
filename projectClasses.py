@@ -215,6 +215,15 @@ class BankPage:
         webbrowser.open_new_tab("https://www.pekao24.pl/")
 
 
+class PRTrojka:
+    def __init__(self, name):
+        self.name = name
+
+    def launch():
+        functions.speak("Włączam Program Trzeci Polskiego Radia.")
+        webbrowser.open_new_tab("player.polskieradio.pl/-3")
+
+
 class Netflix:
     def __init__(self, name):
         self.name = name
