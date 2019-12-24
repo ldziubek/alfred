@@ -330,15 +330,6 @@ class PlayNote:
         notetaker.note_playback()
 
 
-class Franz:
-    def __init__(self, name):
-        self.name = name
-
-    def launch():
-        functions.speak("Włączam komunikator")
-        subprocess.Popen(shlex.split("flatpak run com.meetfranz.Franz"))
-
-
 class Webcomics:
     def __init__(self, name):
         self.name = name
@@ -440,7 +431,6 @@ class TranslationSetup:
         functions.run_program("synology-note-station")
         functions.run_program("mailspring")
         functions.run_program("firefox")
-        subprocess.Popen(shlex.split("flatpak run com.meetfranz.Franz"))
 
 
 class SendEmail:
