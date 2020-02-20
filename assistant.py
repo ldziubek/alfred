@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from functions import command_prompt
-from functions import speak
+from commandPrompt import command_prompt
+from audioFunctions import speak
 import speech_recognition as sr
 import time
 
-mode = 'voice'
+mode = 'text'
 
 
 speak("Rozpoznawanie")

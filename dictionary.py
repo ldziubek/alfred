@@ -6,6 +6,7 @@ search = ["search", "find", "wyszukaj", "znajdź"]
 cities = ["kraków", "krakowie", "oświęcim", "oświęcimiu", "warszawa", "warszawie", "jasień", "jasieniu"]
 weather = ["pogoda", "pogody", "pogodę", "prognoza", "prognozę"]
 
+
 lexicon = {
     'terminal':projectClasses.TerminalConsole,
     'console':projectClasses.TerminalConsole,
