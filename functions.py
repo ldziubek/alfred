@@ -168,7 +168,10 @@ def command_prompt(parameter):
         else:
             command = record_audio()
         if all(word not in command for word in dictionary.stops):
-            if programOn(command):
+            if command in dictionary.lexicon:
+                word = dictionary.lexicon[command]
+                word.launch()
+            elif programOn(command):
                 elements = command.split(" ")
                 for word in elements:
                     if word in dictionary.lexicon:
