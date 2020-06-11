@@ -5,7 +5,7 @@ from audioFunctions import speak
 import speech_recognition as sr
 import time
 
-mode = 'text'
+mode = 'voice'
 
 
 speak("Rozpoznawanie")
