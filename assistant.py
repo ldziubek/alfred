@@ -16,6 +16,7 @@ while True:
         print("Nasłuchuję słowa kluczowego...")
         if mode == "voice":
             with sr.Microphone() as source:
+                r.adjust_for_ambient_noise(source, duration=1)
                 audio = r.listen(source)
             phrase = r.recognize_sphinx(audio)
         else:
