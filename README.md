@@ -8,6 +8,7 @@ Basic operations:
 * "To wszystko" ends command recognition
 * when command recognition is off, "finish" exits program
 In command recognition mode:
+* "co umiesz" shows this readme file
 * "gdzie jest [place name]" opens the place in Google Maps
 * "która godzina" reads current time and date
 * "pogoda", "prognoza", "pokaż prognozę pogody" show weather forecast. By default,
@@ -57,7 +58,7 @@ In command recognition mode:
   * "enter" enters a linebreak
   * "bez odbioru" quits dictation module
 * "wiadomość" asks for subject, body and recipient (from a predefined list) and
-  creates a message in default e-mail Client
+  creates a message in default e-mail client
 * finally, there are some commands to quickly launch predefined sets of apps and
   pages:
   * "będę wystawiać faktury" opens a set of tools for invoicing translation work:

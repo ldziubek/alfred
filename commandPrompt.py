@@ -29,6 +29,9 @@ def command_prompt(parameter):
                 location = command[2]
                 speak("Pokazuję " + location)
                 webbrowser.open_new_tab("https://www.google.nl/maps/place/" + location + "/&amp;")
+            elif "co umiesz" in command:
+                speak("Pokazuję listę funkcji")
+                webbrowser.open_new_tab("https://github.com/ldziubek/alfred/blob/master/README.md")
             elif any(word in command for word in dictionary.search):
                 command = command.split(" ", 1)
                 keyword = command[1]
