@@ -271,8 +271,14 @@ class ShutdownComputer:
         self.name = name
 
     def launch():
-        speak("Wyłączam komputer.")
-        os.system("shutdown -h now")
+        speak("Czy na pewno wyłączyć komputer?")
+        command = record_audio()
+        if "tak" in command:
+            speak("Wyłączam komputer.")
+            os.system("shutdown -h now")
+        else:
+            speak("W porządku, anuluję operację.")
+            return
 
 
 class RebootComputer:
@@ -280,8 +286,14 @@ class RebootComputer:
         self.name = name
 
     def launch():
-        speak("Uruchamiam ponownie komputer.")
-        os.system("shutdown -r now")
+        speak("Czy uruchomić ponownie komputer?")
+        command = record_audio()
+        if "tak" in command:
+            speak("OK.")
+            os.system("shutdown -r now")
+        else:
+            speak("W porządku, anuluję operację.")
+            return
 
 
 class LockScreen:
