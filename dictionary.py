@@ -51,6 +51,7 @@ lexicon = {
     'spotify':projectClasses.Spotify,
     'music':projectClasses.Spotify,
     'muzykę':projectClasses.Spotify,
+    'muzyka':projectClasses.Spotify,
     'intellij':projectClasses.IDE,
     'ideę':projectClasses.IDE,
     'idea':projectClasses.IDE,

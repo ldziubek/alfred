@@ -408,7 +408,7 @@ class AccountingSetup:
     def launch():
         speak("Do usług.")
         programFunctions.run_program("soffice")
-        programFunctions.run_program("mailspring")
+        programFunctions.run_program("geary")
         programFunctions.run_program("gnome-calculator")
 
 
@@ -432,7 +432,7 @@ class TranslationSetup:
         speak("Do usług.")
         programFunctions.run_program("google-chrome")
         programFunctions.run_program("synology-note-station")
-        programFunctions.run_program("mailspring")
+        programFunctions.run_program("geary")
         programFunctions.run_program("firefox")
 
 
