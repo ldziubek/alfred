@@ -6,7 +6,6 @@ import shlex
 
 import functions
 from audioFunctions import speak, record_audio
-
 import notetaker
 
 
@@ -98,7 +97,7 @@ class EmailClient:
         file = open("output.txt", "r")
         programname = ("gtk-launch " + file.read())
         file.close()
-        mailspring = Program("Mailspring", shlex.split(programname))
+        mailspring = Program("Geary", shlex.split(programname))
         mailspring.run()
 
 
