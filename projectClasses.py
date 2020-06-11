@@ -1,10 +1,12 @@
 import webbrowser
 import os
 import pyautogui
-import notetaker
-import functions
 import subprocess
 import shlex
+
+import functions
+from audioFunctions import speak, record_audio
+import notetaker
 
 
 class Program:
@@ -13,12 +15,12 @@ class Program:
         self.path = path
 
     def run(self):
-        functions.speak("Włączam " + self.name)
-        functions.run_program(self.path)
+        speak("Włączam " + self.name)
+        programFunctions.run_program(self.path)
 
     def kill(self):
-        functions.speak("Wyłączam " + self.name)
-        functions.kill_program(self.path)
+        speak("Wyłączam " + self.name)
+        programFunctions.kill_program(self.path)
 
 
 class TerminalConsole:
@@ -95,7 +97,7 @@ class EmailClient:
         file = open("output.txt", "r")
         programname = ("gtk-launch " + file.read())
         file.close()
-        mailspring = Program("Mailspring", shlex.split(programname))
+        mailspring = Program("Geary", shlex.split(programname))
         mailspring.run()
 
 
@@ -139,7 +141,7 @@ class Spotify:
         self.name = name
 
     def launch():
-        functions.speak("Włączam spotifaj")
+        speak("Włączam spotifaj")
         subprocess.Popen(shlex.split("flatpak run com.spotify.Client"))
 
 
@@ -148,7 +150,7 @@ class IDE:
         self.name = name
 
     def launch():
-        functions.speak("Włączam środowisko programistyczne")
+        speak("Włączam środowisko programistyczne")
         subprocess.Popen(shlex.split("flatpak run io.atom.Atom"))
 
 
@@ -157,7 +159,7 @@ class Memsource:
         self.name = name
 
     def launch():
-        functions.speak("Otwieram MemSource.")
+        speak("Otwieram MemSource.")
         webbrowser.open_new_tab("https://cloud.memsource.com/web/project/list")
 
 
@@ -166,7 +168,7 @@ class Quill:
         self.name = name
 
     def launch():
-        functions.speak("Otwieram platformę Quill.")
+        speak("Otwieram platformę Quill.")
         webbrowser.open_new_tab("https://app.quill-cloud.com/")
 
 
@@ -175,7 +177,7 @@ class Ling:
         self.name = name
 
     def launch():
-        functions.speak("Otwieram słownik.")
+        speak("Otwieram słownik.")
         webbrowser.open_new_tab("http://www.ling.pl/")
 
 
@@ -184,7 +186,7 @@ class GoogleMT:
         self.name = name
 
     def launch():
-        functions.speak("Otwieram tłumacza Google.")
+        speak("Otwieram tłumacza Google.")
         webbrowser.open_new_tab("https://translate.google.pl/")
 
 
@@ -193,7 +195,7 @@ class DeepL:
         self.name = name
 
     def launch():
-        functions.speak("Otwieram DeepL.")
+        speak("Otwieram DeepL.")
         webbrowser.open_new_tab("https://www.deepl.com/translator")
 
 
@@ -211,7 +213,7 @@ class BankPage:
         self.name = name
 
     def launch():
-        functions.speak("Otwieram stronę banku.")
+        speak("Otwieram stronę banku.")
         webbrowser.open_new_tab("https://www.pekao24.pl/")
 
 
@@ -220,7 +222,7 @@ class PRTrojka:
         self.name = name
 
     def launch():
-        functions.speak("Włączam Program Trzeci Polskiego Radia.")
+        speak("Włączam Program Trzeci Polskiego Radia.")
         webbrowser.open_new_tab("player.polskieradio.pl/-3")
 
 
@@ -229,7 +231,7 @@ class Netflix:
         self.name = name
 
     def launch():
-        functions.speak("Otwieram Netfliksa.")
+        speak("Otwieram Netfliksa.")
         webbrowser.open_new_tab("http://www.netflix.com/browse")
 
 
@@ -238,7 +240,7 @@ class HboGo:
         self.name = name
 
     def launch():
-        functions.speak("Otwieram HBO GO.")
+        speak("Otwieram HBO GO.")
         webbrowser.open_new_tab("https://hbogo.pl/")
 
 
@@ -247,7 +249,7 @@ class Amazon:
         self.name = name
 
     def launch():
-        functions.speak("Otwieram Amazon Prajm")
+        speak("Otwieram Amazon Prajm")
         webbrowser.open_new_tab("https://www.primevideo.com/")
 
 
@@ -269,7 +271,7 @@ class ShutdownComputer:
         self.name = name
 
     def launch():
-        functions.speak("Wyłączam komputer.")
+        speak("Wyłączam komputer.")
         os.system("shutdown -h now")
 
 
@@ -278,7 +280,7 @@ class RebootComputer:
         self.name = name
 
     def launch():
-        functions.speak("Uruchamiam ponownie komputer.")
+        speak("Uruchamiam ponownie komputer.")
         os.system("shutdown -r now")
 
 
@@ -287,7 +289,7 @@ class LockScreen:
         self.name = name
 
     def launch():
-        os.system("dbus-send --type=method_call --dest=org.gnome.ScreenSaver /org/gnome/ScreenSaver org.gnome.ScreenSaver.Lock")
+        os.system("xdg-screensaver lock")
 
 
 class PlayPause:
@@ -304,6 +306,7 @@ class AddNote:
 
     def launch():
         notetaker.note_add()
+
 
 class RemoveNote:
     def __init__(self, name):
@@ -329,21 +332,12 @@ class PlayNote:
         notetaker.note_playback()
 
 
-class Franz:
-    def __init__(self, name):
-        self.name = name
-
-    def launch():
-        functions.speak("Włączam komunikator")
-        subprocess.Popen(shlex.split("flatpak run com.meetfranz.Franz"))
-
-
 class Webcomics:
     def __init__(self, name):
         self.name = name
 
     def launch():
-        functions.speak("Otwieram Twoje ulubione komiksy.")
+        speak("Otwieram Twoje ulubione komiksy.")
         webbrowser.open_new_tab("https://leasticoulddo.com/")
         webbrowser.open_new_tab("https://www.lfg.co/")
         webbrowser.open_new_tab("http://www.tabletitans.com/")
@@ -357,11 +351,11 @@ class WeatherForecast:
         self.name = name
 
     def launch():
-        functions.speak("Otwieram prognozę pogody.")
+        speak("Otwieram prognozę pogody.")
         webbrowser.open_new_tab("https://duckduckgo.com/?q=weather+krak%C3%B3w&t=ffab&ia=weather")
 
     def launchCity(arg):
-        functions.speak("Otwieram prognozę pogody.")
+        speak("Otwieram prognozę pogody.")
         if arg == "krakowie":
             webbrowser.open_new_tab("https://duckduckgo.com/?q=weather+krak%C3%B3w&t=ffab&ia=weather")
         elif arg == "kraków":
@@ -385,7 +379,7 @@ class Lbry:
         self.name = name
 
     def launch():
-        functions.speak("Włączam lajbry")
+        speak("Włączam lajbry")
         subprocess.Popen(shlex.split("flatpak run io.lbry.lbry-app"))
 
 
@@ -394,7 +388,8 @@ class WhatsTheTime:
         self.name = name
 
     def launch():
-        functions.speak(functions.reformat_time())
+        speak(functions.reformat_time())
+        print("zrobione")
 
 
 class DictiationTool:
@@ -402,7 +397,7 @@ class DictiationTool:
         self.name = name
 
     def launch():
-        functions.speak("Możesz zaczynać")
+        speak("Możesz zaczynać")
         functions.dictation()
 
 
@@ -411,10 +406,10 @@ class AccountingSetup:
         self.name = name
 
     def launch():
-        functions.speak("Do usług.")
-        functions.run_program("soffice")
-        functions.run_program("mailspring")
-        functions.run_program("gnome-calculator")
+        speak("Do usług.")
+        programFunctions.run_program("soffice")
+        programFunctions.run_program("mailspring")
+        programFunctions.run_program("gnome-calculator")
 
 
 class CodingSetup:
@@ -422,10 +417,10 @@ class CodingSetup:
         self.name = name
 
     def launch():
-        functions.speak("Do usług.")
-        functions.run_program("gnome-terminal")
-        functions.run_program("synology-note-station")
-        functions.run_program("firefox")
+        speak("Do usług.")
+        programFunctions.run_program("gnome-terminal")
+        programFunctions.run_program("synology-note-station")
+        programFunctions.run_program("firefox")
         subprocess.Popen(shlex.split("flatpak run io.atom.Atom"))
 
 
@@ -434,9 +429,44 @@ class TranslationSetup:
         self.name = name
 
     def launch():
-        functions.speak("Do usług.")
-        functions.run_program("google-chrome")
-        functions.run_program("synology-note-station")
-        functions.run_program("mailspring")
-        functions.run_program("firefox")
-        subprocess.Popen(shlex.split("flatpak run com.meetfranz.Franz"))
+        speak("Do usług.")
+        programFunctions.run_program("google-chrome")
+        programFunctions.run_program("synology-note-station")
+        programFunctions.run_program("mailspring")
+        programFunctions.run_program("firefox")
+
+
+class SendEmail:
+    def __init__(self, name):
+        self.name = name
+
+    def launch():
+        speak("Podaj temat.")
+        subject = record_audio()
+        print(subject)
+        speak("Podaj odbiorcę")
+        recipient = record_audio()
+        print(recipient)
+        try:
+            with open("recipients.txt") as f:
+                emailContacts = dict(line.strip().split(":") for line in f)
+        except FileNotFoundError:
+            print("Lista odbiorców niedostępna.")
+            emailContacts = {}
+        if recipient in emailContacts:
+            recipientAddress = emailContacts[recipient]
+            print(recipientAddress)
+            speak("Podaj treść")
+            mailBody = record_audio()
+            print(mailBody)
+            speak("Przygotowano wiadomość do odbiorcy: " + recipient + " o temacie: " + subject + " i treści: " + mailBody + ". Czy otworzyć w programie pocztowym?")
+            decision = record_audio()
+            if decision == "tak":
+                polecenie = "xdg-email --subject \'{!s}\' --body \'{!s}\' \'{!s}\'".format(subject, mailBody, recipientAddress)
+                subprocess.Popen(shlex.split(polecenie))
+            else:
+                speak("Kasuję wiadomość.")
+        else:
+            speak("Nie rozpoznano odbiorcy")
+
+import programFunctions

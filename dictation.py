@@ -1,6 +1,5 @@
 from functions import dictation
-from functions import speak
-
+from audioFunctions import speak
 
 speak("Możesz zaczynać.")
 dictation()

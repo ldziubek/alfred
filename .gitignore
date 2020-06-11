@@ -2886,3 +2886,5 @@ venv/lib64
 venv/pip-selfcheck.json
 
 venv/pyvenv.cfg
+
+recipients.txt
