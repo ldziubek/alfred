@@ -6,6 +6,7 @@ search = ["search", "find", "wyszukaj", "znajdź"]
 cities = ["kraków", "krakowie", "oświęcim", "oświęcimiu", "warszawa", "warszawie", "jasień", "jasieniu"]
 weather = ["pogoda", "pogody", "pogodę", "prognoza", "prognozę"]
 
+
 lexicon = {
     'terminal':projectClasses.TerminalConsole,
     'console':projectClasses.TerminalConsole,
@@ -127,9 +128,6 @@ lexicon = {
     'play a note':projectClasses.PlayNote,
     'odtwórz notatkę':projectClasses.PlayNote,
     'otwórz notatkę':projectClasses.PlayNote,
-    'komunikator':projectClasses.Franz,
-    'franz':projectClasses.Franz,
-    'franc':projectClasses.Franz,
     'webcomics':projectClasses.Webcomics,
     'cartoons':projectClasses.Webcomics,
     'komiks':projectClasses.Webcomics,
@@ -145,4 +143,5 @@ lexicon = {
     'będę wystawiać faktury':projectClasses.AccountingSetup,
     'będę programować':projectClasses.CodingSetup,
     'będę tłumaczyć':projectClasses.TranslationSetup,
+    'wiadomość':projectClasses.SendEmail,
     }
