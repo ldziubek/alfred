@@ -144,6 +144,84 @@ class Spotify:
         speak("Włączam spotifaj")
         subprocess.Popen(shlex.split("flatpak run com.spotify.Client"))
 
+    def play():
+        subprocess.Popen(shlex.split("qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play"))
+
+    def pause():
+        subprocess.Popen(shlex.split("qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop"))
+
+    def next():
+        subprocess.Popen(shlex.split("qdbus org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"))
+
+
+class Radio:
+    def __init__(self, name):
+        self.name = name
+
+    def launch():
+        radiospacja = Program("Rhythmbox", "rhythmbox")
+        radiospacja.run()
+
+    def kill():
+        radiospacja = Program("Rhythmbox", "rhythmbox")
+        radiospacja.kill()
+
+    def play():
+        subprocess.Popen(shlex.split("rhythmbox-client --play"))
+
+    def pause():
+        subprocess.Popen(shlex.split("rhythmbox-client --pause"))
+
+    def next():
+        subprocess.Popen(shlex.split("rhythmbox-client --next"))
+
+
+class NowySwiat:
+    def __init__(self, name):
+        self.name = name
+
+    def launch():
+        nowySwiat = Program("Rhythmbox", shlex.split("rhythmbox-client --play-uri='https://n02.rcs.revma.com/ypqt40u0x1zuv?fbclid=IwAR2DIX_Rw0Iez5LhjHV3w1j7-OtQdYpTzv7zJQiUhghYfEMtAe8vXSxQnCA&rj-ttl=5&rj-tok=AAABczTq2r4Ae2FGwl_zCrzS8g'"))
+        nowySwiat.run()
+
+    def kill():
+        nowySwiat = Program("Rhythmbox", "rhythmbox")
+        nowySwiat.kill()
+
+    def play():
+        subprocess.Popen(shlex.split("rhythmbox-client --play"))
+
+    def pause():
+        subprocess.Popen(shlex.split("rhythmbox-client --pause"))
+
+
+class Radiospacja:
+    def __init__(self, name):
+        self.name = name
+
+    def launch():
+        radiospacja = Program("Rhythmbox", shlex.split("rhythmbox-client --play-uri='https://play.adtonos.com/radiospacjapl'"))
+        radiospacja.run()
+
+    def kill():
+        radiospacja = Program("Rhythmbox", "rhythmbox")
+        radiospacja.kill()
+
+    def play():
+        subprocess.Popen(shlex.split("rhythmbox-client --play"))
+
+    def pause():
+        subprocess.Popen(shlex.split("rhythmbox-client --pause"))
+
+
+class Podcasts:
+    def __init__(self, name):
+        self.name = name
+
+    def launch():
+        speak("Włączam podkasty")
+        subprocess.Popen(shlex.split("flatpak run org.gnome.Podcasts"))
+
 
 class IDE:
     def __init__(self, name):
@@ -217,15 +295,6 @@ class BankPage:
         webbrowser.open_new_tab("https://www.pekao24.pl/")
 
 
-# class PRTrojka:
-#     def __init__(self, name):
-#         self.name = name
-#
-#     def launch():
-#         speak("Włączam Program Trzeci Polskiego Radia.")
-#         webbrowser.open_new_tab("player.polskieradio.pl/-3")
-
-
 class Netflix:
     def __init__(self, name):
         self.name = name
@@ -233,6 +302,10 @@ class Netflix:
     def launch():
         speak("Otwieram Netfliksa.")
         webbrowser.open_new_tab("http://www.netflix.com/browse")
+
+    def play():
+        print("weszło")
+        pyautogui.press('space')
 
 
 class HboGo:
@@ -302,14 +375,6 @@ class LockScreen:
 
     def launch():
         os.system("xdg-screensaver lock")
-
-
-class PlayPause:
-    def __init__(self, name):
-        self.name = name
-
-    def launch():
-        pyautogui.press('space')
 
 
 class AddNote:

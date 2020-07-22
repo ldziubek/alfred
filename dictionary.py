@@ -1,10 +1,13 @@
 import projectClasses
 
 
-stops = ["quit", "close", "exit", "stop", "zamknij"]
+quits = ["quit", "close", "exit", "zamknij"]
 search = ["search", "find", "wyszukaj", "znajdź"]
 cities = ["kraków", "krakowie", "oświęcim", "oświęcimiu", "warszawa", "warszawie", "jasień", "jasieniu"]
 weather = ["pogoda", "pogody", "pogodę", "prognoza", "prognozę"]
+plays = ["play", "graj", "odtwarzaj"]
+pauses = ["stop", "zatrzymaj", "wstrzymaj"]
+nexts = ["next", "dalej", "następny", "następne"]
 
 
 lexicon = {
@@ -82,8 +85,12 @@ lexicon = {
     'world fast':projectClasses.Wordfast,
     'bank':projectClasses.BankPage,
     'banku':projectClasses.BankPage,
-    # 'trójka':projectClasses.PRTrojka,
-    # 'trójkę':projectClasses.PRTrojka,
+    'nowy świat':projectClasses.NowySwiat,
+    'radiospacja':projectClasses.Radiospacja,
+    'radio spacja':projectClasses.Radiospacja,
+    'podkasty':projectClasses.Podcasts,
+    'podcasty':projectClasses.Podcasts,
+    'radio':projectClasses.Radio,
     'netflix':projectClasses.Netflix,
     'movies':projectClasses.Netflix,
     'movie player':projectClasses.Netflix,
@@ -108,13 +115,6 @@ lexicon = {
     'lock':projectClasses.LockScreen,
     'zablokuj':projectClasses.LockScreen,
     'zablokuj ekran':projectClasses.LockScreen,
-    'play':projectClasses.PlayPause,
-    'pause':projectClasses.PlayPause,
-    'odtwórz':projectClasses.PlayPause,
-    'odtwarzaj':projectClasses.PlayPause,
-    'pauza':projectClasses.PlayPause,
-    'wstrzymaj':projectClasses.PlayPause,
-    'zatrzymaj':projectClasses.PlayPause,
     'add note':projectClasses.AddNote,
     'add a note':projectClasses.AddNote,
     'dodaj notatkę':projectClasses.AddNote,

@@ -3,7 +3,7 @@ import webbrowser
 import projectClasses
 import dictionary
 from audioFunctions import speak, record_audio
-from programFunctions import programOn, weatherInCity, weather, programOff
+from programFunctions import programOn, weatherInCity, weather, programOff, play, pause, nextSong
 
 
 def command_prompt(parameter):
@@ -14,7 +14,7 @@ def command_prompt(parameter):
             command = input()
         else:
             command = record_audio()
-        if all(word not in command for word in dictionary.stops):
+        if all(word not in command for word in (dictionary.quits + dictionary.plays + dictionary.pauses + dictionary.nexts)):
             if command in dictionary.lexicon:
                 word = dictionary.lexicon[command]
                 word.launch()
@@ -57,3 +57,21 @@ def command_prompt(parameter):
                     if word in dictionary.lexicon:
                         word = dictionary.lexicon[word]
                         word.kill()
+            elif play(command):
+                elements = command.split(" ")
+                for word in elements:
+                    if word in dictionary.lexicon:
+                        word = dictionary.lexicon[word]
+                        word.play()
+            elif pause(command):
+                elements = command.split(" ")
+                for word in elements:
+                    if word in dictionary.lexicon:
+                        word = dictionary.lexicon[word]
+                        word.pause()
+            elif nextSong(command):
+                elements = command.split(" ")
+                for word in elements:
+                    if word in dictionary.lexicon:
+                        word = dictionary.lexicon[word]
+                        word.next()
