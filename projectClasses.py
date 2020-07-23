@@ -128,11 +128,11 @@ class NoteApp:
         self.name = name
 
     def launch():
-        notemaker = Program("aplikację do notatek", "synology-note-station")
+        notemaker = Program("aplikację do notatek", "joplin-desktop")
         notemaker.run()
 
     def kill():
-        notemaker = Program("aplikację do notatek", "synology-note-station")
+        notemaker = Program("aplikację do notatek", "joplin")
         notemaker.kill()
 
 
