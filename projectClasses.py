@@ -466,7 +466,6 @@ class WhatsTheTime:
 
     def launch():
         speak(functions.reformat_time())
-        print("zrobione")
 
 
 class DictiationTool:

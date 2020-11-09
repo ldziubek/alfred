@@ -69,27 +69,27 @@ def reformat_time():
     else:
         new_time = current_time
     if "Jan" in new_time:
-        new_time = new_time.replace("Jan", "styczeń")
+        new_time = new_time.replace("Jan", "stycznia")
     elif "Feb" in new_time:
-        new_time = new_time.replace("Feb", "luty")
+        new_time = new_time.replace("Feb", "lutego")
     elif "Mar" in new_time:
-        new_time = new_time.replace("Mar", "marzec")
+        new_time = new_time.replace("Mar", "marca")
     elif "Apr" in new_time:
-        new_time = new_time.replace("Apr", "kwiecień")
+        new_time = new_time.replace("Apr", "kwietnia")
     elif "May" in new_time:
-        new_time = new_time.replace("May", "maj")
+        new_time = new_time.replace("May", "maja")
     elif "Jun" in new_time:
-        new_time = new_time.replace("Jun", "czerwiec")
+        new_time = new_time.replace("Jun", "czerwca")
     elif "Jul" in new_time:
-        new_time = new_time.replace("Jul", "lipiec")
+        new_time = new_time.replace("Jul", "lipca")
     elif "Aug" in new_time:
-        new_time = new_time.replace("Aug", "sierpień")
+        new_time = new_time.replace("Aug", "sierpnia")
     elif "Sep" in new_time:
-        new_time = new_time.replace("Sep", "wrzesień")
+        new_time = new_time.replace("Sep", "września")
     elif "Oct" in new_time:
-        new_time = new_time.replace("Oct", "październik")
+        new_time = new_time.replace("Oct", "października")
     elif "Nov" in new_time:
-        new_time = new_time.replace("Nov", "listopad")
+        new_time = new_time.replace("Nov", "listopada")
     elif "Dec" in new_time:
-        new_time = new_time.replace("Dec", "grudzień")
+        new_time = new_time.replace("Dec", "grudnia")
     return new_time
