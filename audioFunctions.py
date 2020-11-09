@@ -3,10 +3,10 @@ import pyttsx3
 from gtts import gTTS
 import time
 import vlc
-
+from io import BytesIO
 
 def speak(audio_string):
-    speak_on(audio_string)
+    speak_off(audio_string)
 
 
 def speak_off(audio_string):
@@ -20,9 +20,12 @@ def speak_off(audio_string):
 
 def speak_on(audio_string):
     print(audio_string)
+    #mp3_fp = BytesIO()
     tts = gTTS(text=audio_string, lang='pl')
     tts.save("audio.mp3")
+    #tts.write_to_fp(mp3_fp)
     sound("audio.mp3")
+    #sound(mp3_fp)
 
 
 def sound(sound):

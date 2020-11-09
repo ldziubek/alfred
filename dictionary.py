@@ -1,13 +1,13 @@
 import projectClasses
 
 
-quits = ["quit", "close", "exit", "zamknij"]
-search = ["search", "find", "wyszukaj", "znajdź"]
-cities = ["kraków", "krakowie", "oświęcim", "oświęcimiu", "warszawa", "warszawie", "jasień", "jasieniu"]
-weather = ["pogoda", "pogody", "pogodę", "prognoza", "prognozę"]
-plays = ["play", "graj", "odtwarzaj"]
-pauses = ["stop", "zatrzymaj", "wstrzymaj"]
-nexts = ["next", "dalej", "następny", "następne"]
+quits = ("quit", "close", "exit", "zamknij")
+search = ("search", "find", "wyszukaj", "znajdź")
+cities = ("kraków", "krakowie", "oświęcim", "oświęcimiu", "warszawa", "warszawie", "jasień", "jasieniu")
+weather = ("pogoda", "pogody", "pogodę", "prognoza", "prognozę")
+plays = ("play", "graj", "odtwarzaj")
+pauses = ("stop", "zatrzymaj", "wstrzymaj")
+nexts = ("next", "dalej", "następny", "następne")
 
 
 lexicon = {
