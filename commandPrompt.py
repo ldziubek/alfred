@@ -24,11 +24,11 @@ def command_prompt(parameter):
                     if word in dictionary.lexicon:
                         word = dictionary.lexicon[word]
                         word.launch()
-            elif "gdzie jest" in command:
+            elif "gdzie" in command:
                 command = command.split(" ", 2)
                 location = command[2]
                 speak("Pokazuję " + location)
-                webbrowser.open_new_tab("https://www.google.nl/maps/place/" + location + "/&amp;")
+                webbrowser.open_new_tab("https://www.google.com/maps/place/" + location + "/&amp;")
             elif "co umiesz" in command:
                 speak("Pokazuję listę funkcji")
                 webbrowser.open_new_tab("https://github.com/ldziubek/alfred/blob/master/README.md")

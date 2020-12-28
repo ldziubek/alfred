@@ -181,7 +181,7 @@ class NowySwiat:
         self.name = name
 
     def launch():
-        nowySwiat = Program("Rhythmbox", shlex.split("rhythmbox-client --play-uri='https://n02.rcs.revma.com/ypqt40u0x1zuv?fbclid=IwAR2DIX_Rw0Iez5LhjHV3w1j7-OtQdYpTzv7zJQiUhghYfEMtAe8vXSxQnCA&rj-ttl=5&rj-tok=AAABczTq2r4Ae2FGwl_zCrzS8g'"))
+        nowySwiat = Program("Rhythmbox", shlex.split("rhythmbox-client --play-uri='https://stream.nowyswiat.online/mp3'"))
         nowySwiat.run()
 
     def kill():
