@@ -97,8 +97,8 @@ class EmailClient:
         file = open("output.txt", "r")
         programname = ("gtk-launch " + file.read())
         file.close()
-        mailspring = Program("Geary", shlex.split(programname))
-        mailspring.run()
+        mail = Program("klienta poczty", shlex.split(programname))
+        mail.run()
 
 
 class FileManager:
