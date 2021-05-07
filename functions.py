@@ -51,7 +51,7 @@ def dictation():
 
 
 def reformat_time():
-    current_time = datetime.datetime.now().strftime("%T %a, %d %b %Y")
+    current_time = datetime.datetime.now().strftime("%T, %a, %d %b %Y")
     if "Mon" in current_time:
         new_time = current_time.replace("Mon", "poniedziałek")
     elif "Tue" in current_time:
@@ -66,6 +66,20 @@ def reformat_time():
         new_time = current_time.replace("Sat", "sobota")
     elif "Sun" in current_time:
         new_time = current_time.replace("Sun", "niedziela")
+    elif "pon" in current_time:
+        new_time = current_time.replace("pon", "poniedziałek")
+    elif "wto" in current_time:
+        new_time = current_time.replace("wto", "wtorek")
+    elif "śro" in current_time:
+        new_time = current_time.replace("śro", "środa")
+    elif "czw" in current_time:
+        new_time = current_time.replace("czw", "czwartek")
+    elif "pią" in current_time:
+        new_time = current_time.replace("pią", "piątek")
+    elif "sob" in current_time:
+        new_time = current_time.replace("sob", "sobota")
+    elif "nie" in current_time:
+        new_time = current_time.replace("nie", "niedziela")
     else:
         new_time = current_time
     if "Jan" in new_time:
